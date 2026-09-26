@@ -1,22 +1,22 @@
 <!--
 =======================================================
-  QR PHISHING AWARENESS PAGE â by Patrick Reyes
+  QR PHISHING AWARENESS PAGE Ã¢ÂÂ by Patrick Reyes
   Hosted on GitHub Pages (free)
 =======================================================
 
   SETUP INSTRUCTIONS (do this before publishing):
-  âââââââââââââââââââââââââââââââââââââââââââââââââ
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   1. Go to https://console.firebase.google.com
-  2. Click "Add project" â give it any name â Continue
-  3. Skip Google Analytics â Create project
+  2. Click "Add project" Ã¢ÂÂ give it any name Ã¢ÂÂ Continue
+  3. Skip Google Analytics Ã¢ÂÂ Create project
   4. Click "Firestore Database" in the left sidebar
-  5. Click "Create database" â Start in TEST MODE â Next â Enable
+  5. Click "Create database" Ã¢ÂÂ Start in TEST MODE Ã¢ÂÂ Next Ã¢ÂÂ Enable
   6. Click the gear icon (Project settings) at the top left
   7. Under "Your apps", click the </> (Web) icon
-  8. Register the app with any nickname â copy the firebaseConfig object
+  8. Register the app with any nickname Ã¢ÂÂ copy the firebaseConfig object
   9. Paste it below replacing the placeholder values
   10. Change ADMIN_PASSWORD to something only you know
-  11. Push to GitHub â enable GitHub Pages (Settings â Pages â main branch)
+  11. Push to GitHub Ã¢ÂÂ enable GitHub Pages (Settings Ã¢ÂÂ Pages Ã¢ÂÂ main branch)
 =======================================================
 -->
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <style>
-    /* ââ Palette âââââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Palette Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     :root {
       --bg:        #04090a;
       --panel:     #0a1714;
@@ -52,15 +52,15 @@
       font-family: "IBM Plex Sans", system-ui, sans-serif;
       font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-    /* ââ Matrix rain âââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Matrix rain Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     canvas#rain { position: fixed; inset: 0; z-index: 0; opacity: .28; pointer-events: none; }
     .scan { position: fixed; inset: 0; z-index: 1; pointer-events: none;
       background: repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 2px,transparent 2px 4px); }
 
-    /* ââ Layout ââââââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Layout Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .wrap { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding-inline: 16px; }
 
-    /* ââ Hero ââââââââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Hero Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .hero { padding-block: 48px 40px; text-align: center;
       display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
@@ -84,7 +84,7 @@
 
     .lede { color: var(--muted); font-size: 17px; max-width: 34ch; }
 
-    /* ââ Fake terminal âââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Fake terminal Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .term { width: 100%; background: rgba(8,22,17,.88); border: 1px solid var(--line); border-radius: 6px; text-align: left; }
     .term-bar { display: flex; gap: 6px; align-items: center; padding: 8px 12px;
       border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace;
@@ -98,18 +98,18 @@
     .cursor { display: inline-block; width: 9px; height: 16px;
       background: var(--green); vertical-align: middle; animation: blink 1s steps(2) infinite; }
 
-    /* ââ Progress bar ââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Progress bar Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .progress { width: 100%; text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--green); }
     .bar { height: 12px; border: 1px solid var(--green-dim); margin-top: 6px; }
     .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--red), var(--amber)); transition: width .2s; }
 
-    /* ââ CTA button ââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ CTA button Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .reveal-btn { font: 600 15px "IBM Plex Mono", monospace; letter-spacing: .08em;
       color: var(--bg); background: var(--green); border: 0;
       padding: 14px 22px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
     .reveal-btn:hover { box-shadow: 0 0 22px var(--green); }
 
-    /* ââ Lesson section ââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Lesson section Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .lesson { padding-block: 40px 120px; display: flex; flex-direction: column; gap: 28px; }
     .card { background: var(--panel); border: 1px solid var(--green); border-radius: 10px; padding: 24px 22px; }
     .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px;
@@ -127,15 +127,15 @@
 
     ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     li { padding-left: 22px; position: relative; }
-    .red li::before { content: "â"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
-    .green li::before { content: "â"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .red li::before { content: "Ã¢ÂÂ"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+    .green li::before { content: "Ã¢ÂÂ"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
     .steps { counter-reset: s; }
     .steps li { counter-increment: s; padding-left: 36px; }
     .steps li::before { content: counter(s); position: absolute; left: 0; top: 1px;
       width: 24px; height: 24px; border-radius: 50%;
       background: var(--amber); color: var(--bg); font: 700 13px/24px "IBM Plex Mono", monospace; text-align: center; }
 
-    /* ââ Name form âââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Name form Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .name-card { background: var(--panel); border: 1px solid var(--amber); border-radius: 10px; padding: 22px; }
     .name-card .eyebrow { color: var(--amber); }
     .name-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
@@ -150,7 +150,7 @@
     .name-row button:hover { box-shadow: 0 0 16px var(--amber); }
     .thanks { display: none; color: var(--green); font-family: "IBM Plex Mono", monospace; font-size: 14px; margin-top: 10px; }
 
-    /* ââ Admin panel âââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Admin panel Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     .admin-trigger { margin-top: 16px; text-align: center; }
     .admin-trigger button { background: transparent; border: 1px dashed var(--green-dim);
       color: var(--muted); font: 13px "IBM Plex Mono", monospace;
@@ -181,13 +181,13 @@
     tr:last-child td { border-bottom: none; }
     .empty-log { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 13px; }
 
-    /* ââ Footer ââââââââââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Footer Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     footer { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; text-align: center;
       padding: 10px 16px; background: linear-gradient(transparent, rgba(4,9,10,.96) 40%);
       font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
     footer b { color: #fff; }
 
-    /* ââ Focus & motion ââââââââââââââââââââââââââââ */
+    /* Ã¢ÂÂÃ¢ÂÂ Focus & motion Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
     :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -204,7 +204,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="alert-badge">â  Unknown QR code scanned</div>
+    <div class="alert-badge">Ã¢ÂÂ  Unknown QR code scanned</div>
 
     <!-- QR icon (inline SVG, no external image needed) -->
     <svg class="qr-icon" viewBox="0 0 29 29" aria-hidden="true" shape-rendering="crispEdges">
@@ -240,16 +240,16 @@
       <div class="bar"><div class="fill" id="fill"></div></div>
     </div>
 
-    <a class="reveal-btn" href="#lesson">Tell me what's going on â</a>
+    <a class="reveal-btn" href="#lesson">Tell me what's going on Ã¢ÂÂ</a>
   </section>
 
   <!-- LESSON -->
   <section class="lesson" id="lesson">
 
     <div class="card">
-      <p class="eyebrow">Relax â you're safe</p>
+      <p class="eyebrow">Relax Ã¢ÂÂ you're safe</p>
       <h2>This was a test. Watch out for QR phishing.</h2>
-      <p>Nothing happened to your phone. Every "hacker" message above is a fake animation â this page collects nothing on its own. But a real scammer's page could look like a normal login screen and steal your passwords, GCash or bank details, or one-time PINs.</p>
+      <p>Nothing happened to your phone. Every "hacker" message above is a fake animation Ã¢ÂÂ this page collects nothing on its own. But a real scammer's page could look like a normal login screen and steal your passwords, GCash or bank details, or one-time PINs.</p>
       <p>This scam is called <span class="mono">quishing</span> (QR + phishing). A QR code hides the web address, so you can't tell where it leads until you're already there.</p>
     </div>
 
@@ -269,7 +269,7 @@
         <ul>
           <li>Read the link preview your camera shows before you tap it</li>
           <li>Only scan codes from sources you trust</li>
-          <li>For your bank, GCash, or Maya â open the official app instead</li>
+          <li>For your bank, GCash, or Maya Ã¢ÂÂ open the official app instead</li>
           <li>Never share OTPs or PINs with anyone, even "customer support"</li>
           <li>Only install apps from the official App Store or Google Play</li>
         </ul>
@@ -288,29 +288,29 @@
 
     <!-- Visitor name form -->
     <div class="name-card" id="name-form-wrap">
-      <p class="eyebrow">ð Let Patrick know you saw this</p>
+      <p class="eyebrow">Ã°ÂÂÂ Let Patrick know you saw this</p>
       <p style="color:var(--muted);margin-bottom:0">Enter your name so Patrick can follow up and teach you more about staying safe. This is voluntary.</p>
       <div class="name-row">
         <input type="text" id="visitor-name" placeholder="Your name or nickname" maxlength="60" autocomplete="off">
         <button id="submit-name">Submit</button>
       </div>
-      <p class="thanks" id="name-thanks">â Got it! Patrick will reach out to discuss QR safety with you.</p>
+      <p class="thanks" id="name-thanks">Ã¢ÂÂ Got it! Patrick will reach out to discuss QR safety with you.</p>
     </div>
 
     <p style="color:var(--muted)">Made by <b style="color:#fff">Patrick Reyes</b> for security awareness. Share this page to protect your friends and family.</p>
 
     <!-- Admin access -->
     <div class="admin-trigger">
-      <button id="admin-btn">ð Owner access</button>
+      <button id="admin-btn">Ã°ÂÂÂ Owner access</button>
     </div>
 
     <div id="admin-panel">
-      <p class="eyebrow">ð Owner Dashboard</p>
+      <p class="eyebrow">Ã°ÂÂÂ Owner Dashboard</p>
       <div id="pw-row">
         <input type="password" id="pw-input" placeholder="Enter admin password" autocomplete="current-password">
         <button id="pw-submit">Unlock</button>
       </div>
-      <p id="pw-error">â Wrong password.</p>
+      <p id="pw-error">Ã¢ÂÂ Wrong password.</p>
       <div id="visitor-log">
         <p id="visitor-count"></p>
         <div class="table-wrap">
@@ -327,12 +327,12 @@
   </section>
 </div>
 
-<footer>Security awareness demo by <b>Patrick Reyes</b> Â· No real hacking happens here</footer>
+<footer>Security awareness demo by <b>Patrick Reyes</b> ÃÂ· No real hacking happens here</footer>
 
 <script>
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââââ
-  // â  STEP 1: Paste your Firebase config here         â
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+  // Ã¢ÂÂ  STEP 1: Paste your Firebase config here         Ã¢ÂÂ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   const firebaseConfig = {
     apiKey:            "AIzaSyBfkH045OCW5xZnKC6e0L7dThF4BJkb_IM",
     authDomain:        "qrphishingtest.firebaseapp.com",
@@ -342,28 +342,38 @@
     appId:             "1:1018535200114:web:63b891227fc106aefc89eb"
   };
 
-  // âââââââââââââââââââââââââââââââââââââââââââââââââââ
-  // â  STEP 2: Set your admin password (change this!)  â
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+  // Ã¢ÂÂ  STEP 2: Set your admin password (change this!)  Ã¢ÂÂ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   const ADMIN_PASSWORD = "patrick2024";
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   //  Firebase init
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   let db = null;
   try {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
+
+    setTimeout(async () => {
+      try {
+        await db.collection("visits").add({
+          device: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+          time: new Date().toISOString()
+        });
+      } catch(e) {}
+    }, 500);
+
   } catch(e) {
     console.warn("Firebase not configured yet:", e.message);
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   //  Matrix rain
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   const canvas = document.getElementById('rain');
   const ctx = canvas.getContext('2d');
-  const chars = 'ã¢ã¤ã¦ã¨ãªã«ã­ã¯ã±ã³01010110QRSCAN$#@%';
+  const chars = 'Ã£ÂÂ¢Ã£ÂÂ¤Ã£ÂÂ¦Ã£ÂÂ¨Ã£ÂÂªÃ£ÂÂ«Ã£ÂÂ­Ã£ÂÂ¯Ã£ÂÂ±Ã£ÂÂ³01010110QRSCAN$#@%';
   let drops = [], FS = 16;
   function resizeCanvas() {
     canvas.width = innerWidth; canvas.height = innerHeight;
@@ -383,9 +393,9 @@
     });
   }, 45);
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   //  Fake terminal
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   const LINES = [
     ['> QR code decoded... redirecting',           ''],
     ['> Connecting to your device....... [OK]',     'ok'],
@@ -417,9 +427,9 @@
     }, 24);
   })();
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   //  Fake progress bar
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   let pct = 0;
   const pctEl = document.getElementById('pct');
   const fillEl = document.getElementById('fill');
@@ -430,9 +440,9 @@
     if (pct >= 99) clearInterval(prog);
   }, 200);
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
-  //  Visitor name submission â Firestore
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+  //  Visitor name submission Ã¢ÂÂ Firestore
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   const submitBtn  = document.getElementById('submit-name');
   const nameInput  = document.getElementById('visitor-name');
   const thanksEl   = document.getElementById('name-thanks');
@@ -442,7 +452,7 @@
     if (!name) { nameInput.focus(); return; }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Savingâ¦';
+    submitBtn.textContent = 'SavingÃ¢ÂÂ¦';
 
     if (db) {
       try {
@@ -463,9 +473,9 @@
 
   nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') submitBtn.click(); });
 
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
-  //  Admin panel â password gate
-  // ââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+  //  Admin panel Ã¢ÂÂ password gate
+  // Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
   document.getElementById('admin-btn').addEventListener('click', () => {
     document.getElementById('admin-panel').classList.toggle('open');
   });
@@ -491,26 +501,27 @@
     }
 
     try {
-      const snap = await db.collection('visitors').orderBy('time', 'desc').get();
+      const [snap, visitSnap] = await Promise.all([
+        db.collection('visitors').orderBy('time', 'desc').get(),
+        db.collection('visits').get()
+      ]);
       const countEl = document.getElementById('visitor-count');
       const tbody   = document.getElementById('visitor-body');
+      countEl.innerHTML = '<b>' + visitSnap.size + '</b> total scanned &nbsp;|&nbsp; <b>' + snap.size + '</b> submitted name';
 
       if (snap.empty) {
-        countEl.textContent = 'No submissions yet.';
         tbody.innerHTML = '<tr><td colspan="4" class="empty-log">Nobody has submitted their name yet.</td></tr>';
         return;
       }
-
-      countEl.textContent = snap.size + ' visitor' + (snap.size !== 1 ? 's' : '') + ' have submitted their name.';
       tbody.innerHTML = '';
       snap.docs.forEach((doc, i) => {
         const d = doc.data();
-        const t = d.time ? new Date(d.time).toLocaleString() : 'â';
+        const t = d.time ? new Date(d.time).toLocaleString() : 'Ã¢ÂÂ';
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td style="color:var(--muted)">${i + 1}</td>
-          <td style="color:var(--ink)">${escHtml(d.name || 'â')}</td>
-          <td style="color:var(--muted)">${escHtml(d.device || 'â')}</td>
+          <td style="color:var(--ink)">${escHtml(d.name || 'Ã¢ÂÂ')}</td>
+          <td style="color:var(--muted)">${escHtml(d.device || 'Ã¢ÂÂ')}</td>
           <td style="color:var(--muted);font-size:12px">${escHtml(t)}</td>`;
         tbody.appendChild(tr);
       });
