@@ -1,22 +1,7 @@
 <!--
 =======================================================
-  QR PHISHING AWARENESS PAGE ÃÂ¢ÃÂÃÂ by Patrick Reyes
+  QR PHISHING AWARENESS PAGE - by Patrick Reyes
   Hosted on GitHub Pages (free)
-=======================================================
-
-  SETUP INSTRUCTIONS (do this before publishing):
-  ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  1. Go to https://console.firebase.google.com
-  2. Click "Add project" ÃÂ¢ÃÂÃÂ give it any name ÃÂ¢ÃÂÃÂ Continue
-  3. Skip Google Analytics ÃÂ¢ÃÂÃÂ Create project
-  4. Click "Firestore Database" in the left sidebar
-  5. Click "Create database" ÃÂ¢ÃÂÃÂ Start in TEST MODE ÃÂ¢ÃÂÃÂ Next ÃÂ¢ÃÂÃÂ Enable
-  6. Click the gear icon (Project settings) at the top left
-  7. Under "Your apps", click the </> (Web) icon
-  8. Register the app with any nickname ÃÂ¢ÃÂÃÂ copy the firebaseConfig object
-  9. Paste it below replacing the placeholder values
-  10. Change ADMIN_PASSWORD to something only you know
-  11. Push to GitHub ÃÂ¢ÃÂÃÂ enable GitHub Pages (Settings ÃÂ¢ÃÂÃÂ Pages ÃÂ¢ÃÂÃÂ main branch)
 =======================================================
 -->
 <!DOCTYPE html>
@@ -35,7 +20,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <style>
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Palette ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
+    /* --- Palette --- */
     :root {
       --bg:        #04090a;
       --panel:     #0a1714;
@@ -46,21 +31,22 @@
       --ink:       #e3f5ec;
       --muted:     #8fb3a3;
       --line:      rgba(61,255,143,.28);
+      --accent:    #3dff8f;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { background: var(--bg); color: var(--ink);
       font-family: "IBM Plex Sans", system-ui, sans-serif;
       font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Matrix rain ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
+    /* --- Matrix rain --- */
     canvas#rain { position: fixed; inset: 0; z-index: 0; opacity: .28; pointer-events: none; }
     .scan { position: fixed; inset: 0; z-index: 1; pointer-events: none;
       background: repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 2px,transparent 2px 4px); }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Layout ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
+    /* --- Layout --- */
     .wrap { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding-inline: 16px; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Hero ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
+    /* --- Hero --- */
     .hero { padding-block: 48px 40px; text-align: center;
       display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
@@ -84,7 +70,7 @@
 
     .lede { color: var(--muted); font-size: 17px; max-width: 34ch; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Fake terminal ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
+    /* --- Fake terminal --- */
     .term { width: 100%; background: rgba(8,22,17,.88); border: 1px solid var(--line); border-radius: 6px; text-align: left; }
     .term-bar { display: flex; gap: 6px; align-items: center; padding: 8px 12px;
       border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace;
@@ -98,449 +84,426 @@
     .cursor { display: inline-block; width: 9px; height: 16px;
       background: var(--green); vertical-align: middle; animation: blink 1s steps(2) infinite; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Progress bar ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    .progress { width: 100%; text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--green); }
-    .bar { height: 12px; border: 1px solid var(--green-dim); margin-top: 6px; }
-    .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--red), var(--amber)); transition: width .2s; }
+    /* --- Name card --- */
+    .name-card { background: var(--panel); border: 1px solid var(--line);
+      border-radius: 8px; padding: 20px 22px; }
+    .eyebrow { font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 10px; font-family: "IBM Plex Mono", monospace; }
+    .name-row { display: flex; gap: 8px; }
+    .name-row input { flex: 1; background: rgba(255,255,255,.05); border: 1px solid var(--line);
+      border-radius: 4px; color: var(--ink); padding: 9px 12px; font-size: 15px;
+      font-family: inherit; outline: none; }
+    .name-row input:focus { border-color: var(--green); }
+    .name-row button { background: var(--green); color: #000; border: none;
+      border-radius: 4px; padding: 9px 18px; font-weight: 700; font-size: 15px;
+      font-family: inherit; cursor: pointer; white-space: nowrap; }
+    .name-row button:hover { background: #5affa2; }
+    .thanks { color: var(--green); font-size: 14px; display: none; }
+    .thanks.show { display: block; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ CTA button ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    .reveal-btn { font: 600 15px "IBM Plex Mono", monospace; letter-spacing: .08em;
-      color: var(--bg); background: var(--green); border: 0;
-      padding: 14px 22px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
-    .reveal-btn:hover { box-shadow: 0 0 22px var(--green); }
+    /* --- Info cards --- */
+    .cards { display: grid; gap: 18px; margin-block: 2rem; }
+    @media (min-width: 600px) { .cards { grid-template-columns: 1fr 1fr; } }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Lesson section ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    .lesson { padding-block: 40px 120px; display: flex; flex-direction: column; gap: 28px; }
-    .card { background: var(--panel); border: 1px solid var(--green); border-radius: 10px; padding: 24px 22px; }
-    .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
-    h2 { font-size: clamp(24px, 4.5vw, 32px); line-height: 1.15; text-wrap: balance; color: #fff; margin-bottom: 10px; }
-    h3 { font-size: 19px; color: #fff; margin-bottom: 12px; }
-    p { max-width: 65ch; margin-bottom: 12px; }
-    .mono { font-family: "IBM Plex Mono", monospace; color: var(--amber); }
+    .card { background: var(--panel); border: 1px solid var(--line);
+      border-radius: 8px; padding: 20px 22px; }
+    .card-head { font-family: "IBM Plex Mono", monospace; font-size: 12px;
+      letter-spacing: .15em; text-transform: uppercase; margin-bottom: 12px; }
+    .card-head.red { color: var(--red); }
+    .card-head.green { color: var(--green); }
 
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .box { border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: rgba(10,23,20,.7); }
-    .box.red { border-color: rgba(255,59,78,.5); }
-    .box.red h3 { color: var(--red); }
-    .box.green h3 { color: var(--green); }
+    ul.flag-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    ul.flag-list li { font-size: 15px; color: var(--muted); padding-left: 16px; position: relative; }
+    ul.flag-list li::before { content: ">"; position: absolute; left: 0; color: var(--red); font-family: monospace; }
+    ul.flag-list.safe li::before { content: ">"; color: var(--green); }
 
-    ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    li { padding-left: 22px; position: relative; }
-    .red li::before { content: "ÃÂ¢ÃÂÃÂ"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
-    .green li::before { content: "ÃÂ¢ÃÂÃÂ"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-    .steps { counter-reset: s; }
-    .steps li { counter-increment: s; padding-left: 36px; }
-    .steps li::before { content: counter(s); position: absolute; left: 0; top: 1px;
-      width: 24px; height: 24px; border-radius: 50%;
-      background: var(--amber); color: var(--bg); font: 700 13px/24px "IBM Plex Mono", monospace; text-align: center; }
+    /* --- What happened --- */
+    .explainer { background: var(--panel); border: 1px solid var(--line);
+      border-radius: 8px; padding: 24px 26px; margin-block: 2rem; }
+    .explainer h2 { font-family: "IBM Plex Mono", monospace; font-size: 16px;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
+    .explainer p { color: var(--muted); font-size: 15px; margin-bottom: 10px; }
+    .explainer p:last-child { margin-bottom: 0; }
+    .explainer strong { color: var(--ink); }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Name form ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    .name-card { background: var(--panel); border: 1px solid var(--amber); border-radius: 10px; padding: 22px; }
-    .name-card .eyebrow { color: var(--amber); }
-    .name-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .name-row input { flex: 1; min-width: 160px;
-      font: 15px "IBM Plex Mono", monospace; background: rgba(0,0,0,.4);
-      border: 1px solid var(--green-dim); color: var(--ink);
-      padding: 10px 14px; border-radius: 4px; }
-    .name-row input::placeholder { color: var(--muted); }
-    .name-row button { font: 600 14px "IBM Plex Mono", monospace; letter-spacing: .06em;
-      color: var(--bg); background: var(--amber); border: 0;
-      padding: 10px 18px; border-radius: 4px; cursor: pointer; white-space: nowrap; }
-    .name-row button:hover { box-shadow: 0 0 16px var(--amber); }
-    .thanks { display: none; color: var(--green); font-family: "IBM Plex Mono", monospace; font-size: 14px; margin-top: 10px; }
+    /* --- Progress bar --- */
+    .progress-wrap { margin-block: 2rem; }
+    .progress-label { font-family: "IBM Plex Mono", monospace; font-size: 12px;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .bar-track { height: 6px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--green); border-radius: 3px;
+      transition: width 1s ease; }
 
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Admin panel ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    .admin-trigger { margin-top: 16px; text-align: center; }
-    .admin-trigger button { background: transparent; border: 1px dashed var(--green-dim);
-      color: var(--muted); font: 13px "IBM Plex Mono", monospace;
-      padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-    .admin-trigger button:hover { color: var(--green); border-color: var(--green); }
+    /* --- Admin panel --- */
+    #admin-wrap { margin-block: 3rem; }
+    #admin-toggle { background: none; border: 1px solid var(--line); color: var(--muted);
+      padding: 6px 14px; font-size: 12px; font-family: "IBM Plex Mono", monospace;
+      letter-spacing: .1em; cursor: pointer; border-radius: 4px; }
+    #admin-toggle:hover { border-color: var(--green); color: var(--green); }
+    #admin-panel { display: none; margin-top: 16px; background: var(--panel);
+      border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+    #admin-panel h3 { font-family: "IBM Plex Mono", monospace; font-size: 13px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
+    #pw-row { display: flex; gap: 8px; margin-bottom: 16px; }
+    #pw-input { flex: 1; background: rgba(255,255,255,.05); border: 1px solid var(--line);
+      border-radius: 4px; color: var(--ink); padding: 8px 12px; font-family: inherit; font-size: 14px; outline: none; }
+    #pw-input:focus { border-color: var(--amber); }
+    #pw-btn { background: var(--amber); color: #000; border: none; border-radius: 4px;
+      padding: 8px 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
+    #pw-err { color: var(--red); font-size: 13px; display: none; margin-bottom: 8px; }
+    #visitor-count { font-family: "IBM Plex Mono", monospace; font-size: 14px;
+      color: var(--green); margin-bottom: 12px; }
+    table#visitor-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table#visitor-table th { color: var(--muted); font-weight: 600;
+      border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    table#visitor-table td { padding: 6px 8px; border-bottom: 1px solid rgba(61,255,143,.1); color: var(--ink); }
+    table#visitor-table tr:last-child td { border-bottom: none; }
 
-    #admin-panel { display: none; background: rgba(4,9,10,.95);
-      border: 1px dashed var(--amber); border-radius: 10px; padding: 22px; }
-    #admin-panel.open { display: block; }
-    #admin-panel .eyebrow { color: var(--amber); }
+    /* --- Footer --- */
+    footer { text-align: center; padding-block: 32px 40px; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--green-dim); text-decoration: none; }
+    footer a:hover { color: var(--green); }
 
-    #pw-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-    #pw-row input { flex: 1; min-width: 160px;
-      font: 15px "IBM Plex Mono", monospace; background: rgba(0,0,0,.5);
-      border: 1px solid var(--amber); color: var(--ink);
-      padding: 8px 14px; border-radius: 4px; }
-    #pw-row button { font: 600 14px "IBM Plex Mono", monospace; color: var(--bg);
-      background: var(--amber); border: 0; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-    #pw-error { color: var(--red); font-family: "IBM Plex Mono", monospace; font-size: 13px; display: none; margin-bottom: 10px; }
-
-    #visitor-log { display: none; }
-    #visitor-log.visible { display: block; }
-    #visitor-count { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-family: "IBM Plex Mono", monospace; font-size: 13px; }
-    th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 12px; border-bottom: 1px solid var(--line); }
-    td { padding: 8px 12px; border-bottom: 1px solid rgba(61,255,143,.1); }
-    tr:last-child td { border-bottom: none; }
-    .empty-log { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 13px; }
-
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Footer ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    footer { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; text-align: center;
-      padding: 10px 16px; background: linear-gradient(transparent, rgba(4,9,10,.96) 40%);
-      font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
-    footer b { color: #fff; }
-
-    /* ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Focus & motion ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ */
-    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      canvas#rain { display: none; }
-    }
+    /* --- QR SVG --- */
+    .qr-svg { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; }
   </style>
 </head>
 <body>
 
-<canvas id="rain" aria-hidden="true"></canvas>
-<div class="scan" aria-hidden="true"></div>
+<canvas id="rain"></canvas>
+<div class="scan"></div>
 
 <div class="wrap">
 
-
-  <!-- TOP name form -->
-  <div class="name-card" id="name-form-wrap" style="margin:0 auto 1.5rem;max-width:540px;border:2px solid var(--accent);background:rgba(0,0,0,0.85);position:relative;z-index:10;">
-    <p class="eyebrow" style="margin-bottom:0.4rem">ð Enter your name â Patrick wants to know who scanned this</p>
+  <!-- TOP NAME FORM -->
+  <div class="name-card" id="name-form-wrap" style="margin:1.5rem auto 0;max-width:540px;border:2px solid var(--accent);background:rgba(0,0,0,0.85);position:relative;z-index:10;">
+    <p class="eyebrow" style="margin-bottom:0.4rem">[!] Enter your name -- Patrick wants to know who scanned this QR code</p>
     <div class="name-row">
       <input type="text" id="visitor-name" placeholder="Your name or nickname" maxlength="60" autocomplete="off">
       <button id="submit-name">Submit</button>
     </div>
-    <p class="thanks" id="name-thanks" style="margin-top:0.5rem">â Got it! Patrick will reach out to discuss QR safety with you.</p>
+    <p class="thanks" id="name-thanks" style="margin-top:0.5rem">[OK] Got it! Patrick will reach out to discuss QR safety with you.</p>
   </div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="alert-badge">ÃÂ¢ÃÂÃÂ  Unknown QR code scanned</div>
+    <div class="alert-badge">!! SECURITY ALERT !!</div>
 
-    <!-- QR icon (inline SVG, no external image needed) -->
-    <svg class="qr-icon" viewBox="0 0 29 29" aria-hidden="true" shape-rendering="crispEdges">
-      <rect width="29" height="29" fill="#04090a"/>
-      <g fill="#ff3b4e"><path d="M1 1h7v7H1zM21 1h7v7h-7zM1 21h7v7H1z"/></g>
-      <g fill="#04090a"><path d="M2 2h5v5H2zM22 2h5v5h-5zM2 22h5v5H2z"/></g>
-      <g fill="#ff3b4e">
-        <path d="M3 3h3v3H3zM23 3h3v3h-3zM3 23h3v3H3z"/>
-        <path d="M10 1h2v2h-2zM14 2h2v3h-2zM10 5h3v2h-3zM17 1h2v2h-2z
-                 M10 10h3v2h-3zM15 9h2v4h-2zM19 10h3v2h-3zM24 10h4v2h-4z
-                 M1 10h3v2H1zM6 11h2v3H6zM11 14h3v3h-3zM17 15h4v2h-4z
-                 M23 14h2v4h-2zM1 15h4v2H1zM10 19h2v3h-2zM14 20h4v2h-4z
-                 M20 19h3v3h-3zM25 20h3v2h-3zM11 24h3v3h-3zM16 24h2v4h-2z
-                 M20 24h4v2h-4zM25 26h3v2h-3z"/>
-      </g>
+    <svg class="qr-icon qr-svg" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="30" height="30" rx="3"/>
+      <rect x="14" y="14" width="10" height="10"/>
+      <rect x="54" y="4" width="30" height="30" rx="3"/>
+      <rect x="64" y="14" width="10" height="10"/>
+      <rect x="4" y="54" width="30" height="30" rx="3"/>
+      <rect x="14" y="64" width="10" height="10"/>
+      <line x1="54" y1="54" x2="64" y2="54"/>
+      <line x1="54" y1="64" x2="64" y2="64"/>
+      <line x1="54" y1="74" x2="84" y2="74"/>
+      <line x1="74" y1="54" x2="84" y2="54"/>
+      <line x1="74" y1="64" x2="74" y2="84"/>
+      <line x1="54" y1="84" x2="64" y2="84"/>
     </svg>
 
-    <h1 class="glitch" data-text="YOU'VE BEEN HACKED">YOU'VE BEEN HACKED</h1>
-    <p class="lede">You scanned a QR code without knowing where it would take you.</p>
+    <h1 class="glitch" data-text="YOU JUST GOT QUISHED">YOU JUST GOT QUISHED</h1>
+    <p class="lede">That QR code was a simulated phishing attack. You scanned it -- and landed here.</p>
 
-    <!-- Fake terminal -->
-    <div class="term" role="img" aria-label="Simulated hacker terminal">
+    <div class="term">
       <div class="term-bar">
-        <i class="dot d1"></i><i class="dot d2"></i><i class="dot d3"></i>
-        <span>root@quishing:~#</span>
+        <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+        <span>root@phishlab ~ packet-capture</span>
       </div>
       <div id="log"></div>
     </div>
-
-    <!-- Fake progress -->
-    <div class="progress">
-      <div>Copying your saved passwords: <span id="pct">0</span>%</div>
-      <div class="bar"><div class="fill" id="fill"></div></div>
-    </div>
-
-    <a class="reveal-btn" href="#lesson">Tell me what's going on ÃÂ¢ÃÂÃÂ</a>
   </section>
 
-  <!-- LESSON -->
-  <section class="lesson" id="lesson">
+  <!-- EXPLAINER -->
+  <div class="explainer">
+    <h2>[ What Just Happened? ]</h2>
+    <p>You scanned a QR code -- possibly from a flyer, poster, or printed material. <strong>That is exactly how QR phishing (quishing) attacks work in the real world.</strong></p>
+    <p>Attackers print or display malicious QR codes in physical spaces -- offices, cafes, parking meters, conference rooms. Victims scan them without questioning the source.</p>
+    <p>This was a safe, controlled demonstration run by Patrick Reyes to test and raise awareness. <strong>No data was stolen.</strong> But a real attacker could have redirected you to a fake login page to steal your credentials.</p>
+  </div>
 
+  <!-- INFO CARDS -->
+  <div class="cards">
     <div class="card">
-      <p class="eyebrow">Relax ÃÂ¢ÃÂÃÂ you're safe</p>
-      <h2>This was a test. Watch out for QR phishing.</h2>
-      <p>Nothing happened to your phone. Every "hacker" message above is a fake animation ÃÂ¢ÃÂÃÂ this page collects nothing on its own. But a real scammer's page could look like a normal login screen and steal your passwords, GCash or bank details, or one-time PINs.</p>
-      <p>This scam is called <span class="mono">quishing</span> (QR + phishing). A QR code hides the web address, so you can't tell where it leads until you're already there.</p>
-    </div>
-
-    <div class="grid-2">
-      <div class="box red">
-        <h3>Red flags</h3>
-        <ul>
-          <li>A sticker pasted over the real QR code on a parking meter, poster, or restaurant table</li>
-          <li>A QR code in a text about a "failed delivery", "locked account", or unpaid fine</li>
-          <li>Urgent wording: "Scan within 24 hours or lose access"</li>
-          <li>Page asks you to log in, enter an OTP, or pay right after scanning</li>
-          <li>Web address is misspelled or doesn't match the company name</li>
-        </ul>
-      </div>
-      <div class="box green">
-        <h3>Safe habits</h3>
-        <ul>
-          <li>Read the link preview your camera shows before you tap it</li>
-          <li>Only scan codes from sources you trust</li>
-          <li>For your bank, GCash, or Maya ÃÂ¢ÃÂÃÂ open the official app instead</li>
-          <li>Never share OTPs or PINs with anyone, even "customer support"</li>
-          <li>Only install apps from the official App Store or Google Play</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="box">
-      <h3>If you already entered your details</h3>
-      <ul class="steps">
-        <li>Change that password now, plus any account using the same one.</li>
-        <li>Call your bank or e-wallet's official hotline and ask them to lock the account.</li>
-        <li>Turn on two-factor authentication (2FA) everywhere.</li>
-        <li>Report to the PNP Anti-Cybercrime Group or CICC hotline <strong>1326</strong>.</li>
+      <p class="card-head red">[ Red Flags to Watch For ]</p>
+      <ul class="flag-list">
+        <li>QR code on a sticker covering the original</li>
+        <li>Unexpected URL after scanning</li>
+        <li>Urgency: "Scan to claim your prize!"</li>
+        <li>Request for login credentials or payment</li>
+        <li>QR in unsolicited emails or messages</li>
+        <li>No clear origin or branding on the code</li>
       </ul>
     </div>
-
-    
-
-    <p style="color:var(--muted)">Made by <b style="color:#fff">Patrick Reyes</b> for security awareness. Share this page to protect your friends and family.</p>
-
-    <!-- Admin access -->
-    <div class="admin-trigger">
-      <button id="admin-btn">ÃÂ°ÃÂÃÂÃÂ Owner access</button>
+    <div class="card">
+      <p class="card-head green">[ Safe Habits ]</p>
+      <ul class="flag-list safe">
+        <li>Preview the URL before opening it</li>
+        <li>Only scan codes from trusted sources</li>
+        <li>Use a QR scanner that shows the link first</li>
+        <li>When in doubt, type the URL manually</li>
+        <li>Report suspicious codes to IT/security</li>
+        <li>Enable multi-factor authentication (MFA)</li>
+      </ul>
     </div>
+  </div>
 
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap">
+    <p class="progress-label">Security Awareness Score</p>
+    <div class="bar-track">
+      <div class="bar-fill" id="score-bar" style="width:0%"></div>
+    </div>
+    <p style="color:var(--muted);font-size:13px;margin-top:6px;" id="score-label">Calculating...</p>
+  </div>
+
+  <!-- BOTTOM NAME FORM -->
+  <div class="name-card" id="name-card-bottom">
+    <p class="eyebrow">[!] Who Are You? Let Patrick Know</p>
+    <div class="name-row">
+      <input type="text" id="visitor-name-b" placeholder="Your name or nickname" maxlength="60" autocomplete="off">
+      <button id="submit-name-b">Submit</button>
+    </div>
+    <p class="thanks" id="name-thanks-b">[OK] Got it! Patrick will follow up with you about QR code safety.</p>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-wrap">
+    <button id="admin-toggle">[ admin ]</button>
     <div id="admin-panel">
-      <p class="eyebrow">ÃÂ°ÃÂÃÂÃÂ Owner Dashboard</p>
+      <h3>Visitor Log</h3>
       <div id="pw-row">
-        <input type="password" id="pw-input" placeholder="Enter admin password" autocomplete="current-password">
-        <button id="pw-submit">Unlock</button>
+        <input type="password" id="pw-input" placeholder="Admin password">
+        <button id="pw-btn">Unlock</button>
       </div>
-      <p id="pw-error">ÃÂ¢ÃÂÃÂ Wrong password.</p>
-      <div id="visitor-log">
+      <p id="pw-err">Wrong password.</p>
+      <div id="visitor-data" style="display:none;">
         <p id="visitor-count"></p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>#</th><th>Name</th><th>Device</th><th>Time (local)</th></tr>
-            </thead>
-            <tbody id="visitor-body"></tbody>
-          </table>
-        </div>
+        <table id="visitor-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Device</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="visitor-body"></tbody>
+        </table>
       </div>
     </div>
+  </div>
 
-  </section>
-</div>
-
-<footer>Security awareness demo by <b>Patrick Reyes</b> ÃÂÃÂ· No real hacking happens here</footer>
+  <footer>
+    <p>QR Phishing Awareness Demo &mdash; Created by <a href="mailto:patrick.reyes@fearextechnologies.com">Patrick Reyes</a></p>
+    <p style="margin-top:4px;">Fearex Technologies &mdash; Internal Security Awareness Training</p>
+  </footer>
+</div><!-- /.wrap -->
 
 <script>
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  // ÃÂ¢ÃÂÃÂ  STEP 1: Paste your Firebase config here         ÃÂ¢ÃÂÃÂ
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  const firebaseConfig = {
-    apiKey:            "AIzaSyBfkH045OCW5xZnKC6e0L7dThF4BJkb_IM",
-    authDomain:        "qrphishingtest.firebaseapp.com",
-    projectId:         "qrphishingtest",
-    storageBucket:     "qrphishingtest.firebasestorage.app",
-    messagingSenderId: "1018535200114",
-    appId:             "1:1018535200114:web:63b891227fc106aefc89eb"
-  };
+/* ============================================================
+   Firebase Init
+   ============================================================ */
+const firebaseConfig = {
+  apiKey:            "AIzaSyBfkH045OCW5xZnKC6e0L7dThF4BJkb_IM",
+  authDomain:        "qrphishingtest.firebaseapp.com",
+  projectId:         "qrphishingtest",
+  storageBucket:     "qrphishingtest.firebasestorage.app",
+  messagingSenderId: "1018535200114",
+  appId:             "1:1018535200114:web:63b891227fc106aefc89eb"
+};
+const ADMIN_PASSWORD = "patrick2024";
 
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  // ÃÂ¢ÃÂÃÂ  STEP 2: Set your admin password (change this!)  ÃÂ¢ÃÂÃÂ
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  const ADMIN_PASSWORD = "patrick2024";
+firebase.initializeApp(firebaseConfig);
+let db;
+try { db = firebase.firestore(); } catch(e) { db = null; }
 
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Firebase init
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  let db = null;
-  try {
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
+/* --- Auto-log every visit --- */
+if (db) {
+  setTimeout(async () => {
+    try {
+      await db.collection("visits").add({
+        device: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+        time:   new Date().toISOString()
+      });
+    } catch(e) { /* silent */ }
+  }, 500);
+}
 
-    setTimeout(async () => {
-      try {
-        await db.collection("visits").add({
-          device: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
-          time: new Date().toISOString()
-        });
-      } catch(e) {}
-    }, 500);
-
-  } catch(e) {
-    console.warn("Firebase not configured yet:", e.message);
+/* ============================================================
+   Matrix Rain
+   ============================================================ */
+(function(){
+  const c = document.getElementById('rain');
+  const ctx = c.getContext('2d');
+  let cols, drops;
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]|';
+  function resize(){
+    c.width = innerWidth; c.height = innerHeight;
+    cols = Math.floor(innerWidth / 16);
+    drops = Array(cols).fill(1);
   }
-
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Matrix rain
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  const canvas = document.getElementById('rain');
-  const ctx = canvas.getContext('2d');
-  const chars = 'ÃÂ£ÃÂÃÂ¢ÃÂ£ÃÂÃÂ¤ÃÂ£ÃÂÃÂ¦ÃÂ£ÃÂÃÂ¨ÃÂ£ÃÂÃÂªÃÂ£ÃÂÃÂ«ÃÂ£ÃÂÃÂ­ÃÂ£ÃÂÃÂ¯ÃÂ£ÃÂÃÂ±ÃÂ£ÃÂÃÂ³01010110QRSCAN$#@%';
-  let drops = [], FS = 16;
-  function resizeCanvas() {
-    canvas.width = innerWidth; canvas.height = innerHeight;
-    drops = Array(Math.floor(canvas.width / FS)).fill(1);
-  }
-  resizeCanvas();
-  addEventListener('resize', resizeCanvas);
-  setInterval(() => {
-    ctx.fillStyle = 'rgba(4,9,10,.08)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  resize();
+  window.addEventListener('resize', resize);
+  setInterval(()=>{
+    ctx.fillStyle = 'rgba(4,9,10,.18)';
+    ctx.fillRect(0,0,c.width,c.height);
     ctx.fillStyle = '#3dff8f';
-    ctx.font = FS + 'px monospace';
-    drops.forEach((y, i) => {
-      ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * FS, y * FS);
-      if (y * FS > canvas.height && Math.random() > .975) drops[i] = 0;
+    ctx.font = '14px "IBM Plex Mono", monospace';
+    drops.forEach((y,i)=>{
+      const ch = chars[Math.random()*chars.length|0];
+      ctx.fillText(ch, i*16, y*16);
+      if(y*16 > c.height && Math.random() > .975) drops[i] = 0;
       drops[i]++;
     });
-  }, 45);
+  }, 55);
+})();
 
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Fake terminal
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  const LINES = [
-    ['> QR code decoded... redirecting',           ''],
-    ['> Connecting to your device....... [OK]',     'ok'],
-    ['> Reading contacts................ 312 found','ok'],
-    ['> Opening photo gallery...........',          ''],
-    ['> Grabbing e-wallet session....... [OK]',     'ok'],
-    ['!! Bank login captured',                      'warn'],
-    ['> Sending to remote server........ done',     'ok'],
-    ['> ...',                                       ''],
-    ['> Just kidding. This is a lesson.',           'ok'],
-    ['> Scroll down to see why.',                   'ok'],
+/* ============================================================
+   Fake Terminal Log
+   ============================================================ */
+(function(){
+  const el = document.getElementById('log');
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  const ua = navigator.userAgent.substring(0,60);
+  const now = new Date().toISOString();
+
+  const lines = [
+    { text: '> scanning QR metadata...',            delay: 0,    cls: '' },
+    { text: '> target device detected: ' + (isMobile ? 'MOBILE' : 'DESKTOP'), delay: 600,  cls: 'warn' },
+    { text: '> user-agent: ' + ua,                  delay: 1200, cls: '' },
+    { text: '> connection established',              delay: 1800, cls: 'ok' },
+    { text: '> timestamp logged: ' + now,           delay: 2400, cls: '' },
+    { text: '> [NOTICE] This is a SAFE awareness demo. No real attack occurred.', delay: 3200, cls: 'ok' },
   ];
-  const logEl = document.getElementById('log');
-  let lineIdx = 0;
-  (function typeNext() {
-    if (lineIdx >= LINES.length) {
-      logEl.insertAdjacentHTML('beforeend', '<span class="cursor"></span>');
-      return;
-    }
-    const [text, cls] = LINES[lineIdx++];
-    const el = document.createElement('div');
-    if (cls) el.className = cls;
-    logEl.appendChild(el);
-    let i = 0;
-    const t = setInterval(() => {
-      el.textContent = text.slice(0, ++i);
-      logEl.scrollTop = logEl.scrollHeight;
-      if (i >= text.length) { clearInterval(t); setTimeout(typeNext, 260); }
-    }, 24);
-  })();
 
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Fake progress bar
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  let pct = 0;
-  const pctEl = document.getElementById('pct');
-  const fillEl = document.getElementById('fill');
-  const prog = setInterval(() => {
-    pct = Math.min(99, pct + Math.random() * 4);
-    pctEl.textContent = Math.floor(pct);
-    fillEl.style.width = pct + '%';
-    if (pct >= 99) clearInterval(prog);
-  }, 200);
-
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Visitor name submission ÃÂ¢ÃÂÃÂ Firestore
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  const submitBtn  = document.getElementById('submit-name');
-  const nameInput  = document.getElementById('visitor-name');
-  const thanksEl   = document.getElementById('name-thanks');
-
-  submitBtn.addEventListener('click', async () => {
-    const name = nameInput.value.trim();
-    if (!name) { nameInput.focus(); return; }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'SavingÃÂ¢ÃÂÃÂ¦';
-
-    if (db) {
-      try {
-        await db.collection('visitors').add({
-          name:   name,
-          device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-          time:   new Date().toISOString()
-        });
-      } catch(e) {
-        console.warn("Could not save visitor:", e.message);
-      }
-    }
-
-    nameInput.style.display = 'none';
-    submitBtn.style.display  = 'none';
-    thanksEl.style.display   = 'block';
+  lines.forEach(({text, delay, cls})=>{
+    setTimeout(()=>{
+      const span = document.createElement('span');
+      if(cls) span.className = cls;
+      span.textContent = text + '\n';
+      el.appendChild(span);
+      el.scrollTop = el.scrollHeight;
+    }, delay);
   });
+})();
 
-  nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') submitBtn.click(); });
-
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  //  Admin panel ÃÂ¢ÃÂÃÂ password gate
-  // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-  document.getElementById('admin-btn').addEventListener('click', () => {
-    document.getElementById('admin-panel').classList.toggle('open');
-  });
-
-  document.getElementById('pw-submit').addEventListener('click', async () => {
-    const entered = document.getElementById('pw-input').value;
-    const errEl   = document.getElementById('pw-error');
-    const logDiv  = document.getElementById('visitor-log');
-
-    if (entered !== ADMIN_PASSWORD) {
-      errEl.style.display = 'block';
-      return;
+/* ============================================================
+   Progress bar animation
+   ============================================================ */
+setTimeout(()=>{
+  const bar = document.getElementById('score-bar');
+  const lbl = document.getElementById('score-label');
+  if(!bar) return;
+  let w = 0;
+  const target = 22;
+  const iv = setInterval(()=>{
+    w = Math.min(w+1, target);
+    bar.style.width = w + '%';
+    if(w >= target){
+      clearInterval(iv);
+      if(lbl) lbl.textContent = 'Score: 22 / 100 -- You clicked a suspicious QR. Learn the red flags above!';
     }
+  }, 30);
+}, 1000);
 
-    errEl.style.display = 'none';
-    document.getElementById('pw-row').style.display = 'none';
-    logDiv.classList.add('visible');
-
-    if (!db) {
-      document.getElementById('visitor-body').innerHTML =
-        '<tr><td colspan="4" style="color:var(--muted)">Firebase not configured yet. Follow the setup instructions in the HTML comments.</td></tr>';
-      return;
-    }
-
+/* ============================================================
+   Name submission (TOP form)
+   ============================================================ */
+document.getElementById('submit-name').addEventListener('click', async () => {
+  const input = document.getElementById('visitor-name');
+  const thanks = document.getElementById('name-thanks');
+  const name = input.value.trim();
+  if (!name) { input.focus(); return; }
+  if (db) {
     try {
-      const [snap, visitSnap] = await Promise.all([
-        db.collection('visitors').orderBy('time', 'desc').get(),
-        db.collection('visits').get()
-      ]);
-      const countEl = document.getElementById('visitor-count');
-      const tbody   = document.getElementById('visitor-body');
-      countEl.innerHTML = '<b>' + visitSnap.size + '</b> total scanned &nbsp;|&nbsp; <b>' + snap.size + '</b> submitted name';
-
-      if (snap.empty) {
-        tbody.innerHTML = '<tr><td colspan="4" class="empty-log">Nobody has submitted their name yet.</td></tr>';
-        return;
-      }
-      tbody.innerHTML = '';
-      snap.docs.forEach((doc, i) => {
-        const d = doc.data();
-        const t = d.time ? new Date(d.time).toLocaleString() : 'ÃÂ¢ÃÂÃÂ';
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td style="color:var(--muted)">${i + 1}</td>
-          <td style="color:var(--ink)">${escHtml(d.name || 'ÃÂ¢ÃÂÃÂ')}</td>
-          <td style="color:var(--muted)">${escHtml(d.device || 'ÃÂ¢ÃÂÃÂ')}</td>
-          <td style="color:var(--muted);font-size:12px">${escHtml(t)}</td>`;
-        tbody.appendChild(tr);
+      await db.collection('visitors').add({
+        name:   name,
+        device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        time:   new Date().toISOString()
       });
-    } catch(e) {
-      document.getElementById('visitor-body').innerHTML =
-        '<tr><td colspan="4" style="color:var(--red)">Error loading data: ' + escHtml(e.message) + '</td></tr>';
-    }
-  });
-
-  document.getElementById('pw-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('pw-submit').click();
-  });
-
-  function escHtml(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    } catch(e) { /* silent */ }
   }
-</script>
+  input.disabled = true;
+  document.getElementById('submit-name').disabled = true;
+  thanks.classList.add('show');
+  // Also disable bottom form if already submitted
+  const inputB = document.getElementById('visitor-name-b');
+  const btnB = document.getElementById('submit-name-b');
+  if(inputB) inputB.disabled = true;
+  if(btnB) btnB.disabled = true;
+  document.getElementById('name-thanks-b').classList.add('show');
+});
 
+/* ============================================================
+   Name submission (BOTTOM form)
+   ============================================================ */
+document.getElementById('submit-name-b').addEventListener('click', async () => {
+  const input = document.getElementById('visitor-name-b');
+  const thanks = document.getElementById('name-thanks-b');
+  const name = input.value.trim();
+  if (!name) { input.focus(); return; }
+  if (db) {
+    try {
+      await db.collection('visitors').add({
+        name:   name,
+        device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        time:   new Date().toISOString()
+      });
+    } catch(e) { /* silent */ }
+  }
+  input.disabled = true;
+  document.getElementById('submit-name-b').disabled = true;
+  thanks.classList.add('show');
+  // Also disable top form
+  const inputT = document.getElementById('visitor-name');
+  const btnT = document.getElementById('submit-name');
+  if(inputT) inputT.disabled = true;
+  if(btnT) btnT.disabled = true;
+  document.getElementById('name-thanks').classList.add('show');
+});
+
+/* ============================================================
+   Admin Panel
+   ============================================================ */
+document.getElementById('admin-toggle').addEventListener('click', ()=>{
+  const panel = document.getElementById('admin-panel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+});
+
+document.getElementById('pw-btn').addEventListener('click', async () => {
+  const pw = document.getElementById('pw-input').value;
+  const err = document.getElementById('pw-err');
+  const data = document.getElementById('visitor-data');
+  if (pw !== ADMIN_PASSWORD) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  data.style.display = 'block';
+  if (!db) {
+    document.getElementById('visitor-count').textContent = 'Firebase not connected.';
+    return;
+  }
+  try {
+    const [snap, visitSnap] = await Promise.all([
+      db.collection('visitors').orderBy('time', 'desc').get(),
+      db.collection('visits').get()
+    ]);
+    const countEl = document.getElementById('visitor-count');
+    const tbody   = document.getElementById('visitor-body');
+    countEl.innerHTML = '<b>' + visitSnap.size + '</b> total scanned &nbsp;|&nbsp; <b>' + snap.size + '</b> submitted name';
+    tbody.innerHTML = '';
+    snap.docs.forEach((doc, i) => {
+      const d = doc.data();
+      const tr = document.createElement('tr');
+      const t = d.time ? new Date(d.time).toLocaleString() : '--';
+      tr.innerHTML = '<td>' + (i+1) + '</td><td>' + (d.name||'--') + '</td><td>' + (d.device||'--') + '</td><td>' + t + '</td>';
+      tbody.appendChild(tr);
+    });
+  } catch(e) {
+    document.getElementById('visitor-count').textContent = 'Error loading data: ' + e.message;
+  }
+});
+</script>
 </body>
 </html>
