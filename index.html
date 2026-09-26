@@ -320,13 +320,34 @@ firebase.initializeApp(firebaseConfig);
 let db;
 try { db = firebase.firestore(); } catch(e) { db = null; }
 
+/* --- Platform detection --- */
+function getPlatform() {
+  var ua = navigator.userAgent;
+  if (/Windows/i.test(ua)) return 'Windows';
+  if (/iPhone|iPad/i.test(ua)) return 'iOS';
+  if (/Android/i.test(ua)) return 'Android';
+  if (/Mac/i.test(ua)) return 'macOS';
+  if (/Linux/i.test(ua)) return 'Linux';
+  if (/CrOS/i.test(ua)) return 'ChromeOS';
+  return 'Unknown';
+}
+
 /* --- Auto-log every visit --- */
 if (db) {
   setTimeout(async () => {
     try {
+      let loc = {};
+      try {
+        const r = await fetch('https://ipapi.co/json/');
+        const j = await r.json();
+        loc = { ip: j.ip, city: j.city, region: j.region, country: j.country_name };
+      } catch(e) { /* no location */ }
       await db.collection("visits").add({
-        device: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
-        time:   new Date().toISOString()
+        device:   /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+        platform: getPlatform(),
+        ua:       navigator.userAgent,
+        location: loc,
+        time:     new Date().toISOString()
       });
     } catch(e) { /* silent */ }
   }, 500);
@@ -419,10 +440,19 @@ document.getElementById('submit-name').addEventListener('click', async () => {
   if (!name) { input.focus(); return; }
   if (db) {
     try {
+      let loc = {};
+      try {
+        const r = await fetch('https://ipapi.co/json/');
+        const j = await r.json();
+        loc = { ip: j.ip, city: j.city, region: j.region, country: j.country_name };
+      } catch(e) { /* no location */ }
       await db.collection('visitors').add({
-        name:   name,
-        device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-        time:   new Date().toISOString()
+        name:     name,
+        device:   /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        platform: getPlatform(),
+        ua:       navigator.userAgent,
+        location: loc,
+        time:     new Date().toISOString()
       });
     } catch(e) { /* silent */ }
   }
@@ -447,10 +477,19 @@ document.getElementById('submit-name-b').addEventListener('click', async () => {
   if (!name) { input.focus(); return; }
   if (db) {
     try {
+      let loc = {};
+      try {
+        const r = await fetch('https://ipapi.co/json/');
+        const j = await r.json();
+        loc = { ip: j.ip, city: j.city, region: j.region, country: j.country_name };
+      } catch(e) { /* no location */ }
       await db.collection('visitors').add({
-        name:   name,
-        device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-        time:   new Date().toISOString()
+        name:     name,
+        device:   /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        platform: getPlatform(),
+        ua:       navigator.userAgent,
+        location: loc,
+        time:     new Date().toISOString()
       });
     } catch(e) { /* silent */ }
   }
